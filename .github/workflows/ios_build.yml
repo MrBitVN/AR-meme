@@ -1,0 +1,45 @@
+name: Build iOS App
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    runs-on: macos-14
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Select Xcode Version
+        run: |
+          sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+          xcodebuild -version
+
+      - name: Build iOS App for Device
+        run: |
+          xcodebuild build \
+            -project ios/ARFilterMeme.xcodeproj \
+            -scheme ARFilterMeme \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination "generic/platform=iOS" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            BUILD_DIR=ios/build
+
+      - name: Compress App Bundle
+        run: |
+          cd ios/build/Release-iphoneos
+          zip -r ARFilterMeme-iOS.zip ARFilterMeme.app
+
+      - name: Upload iOS Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ARFilterMeme-iOS-Build
+          path: ios/build/Release-iphoneos/ARFilterMeme-iOS.zip
+          retention-days: 14

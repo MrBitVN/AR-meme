@@ -1,0 +1,323 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA0100012CE0000100000001 /* ARFilterMemeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200012CE0000100000001 /* ARFilterMemeApp.swift */; };
+		AA0100022CE0000100000002 /* MemeCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200022CE0000100000002 /* MemeCharacter.swift */; };
+		AA0100032CE0000100000003 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200032CE0000100000003 /* CustomARView.swift */; };
+		AA0100042CE0000100000004 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200042CE0000100000004 /* ARViewContainer.swift */; };
+		AA0100052CE0000100000005 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200052CE0000100000005 /* ModelManager.swift */; };
+		AA0100062CE0000100000006 /* ScreenRecorderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200062CE0000100000006 /* ScreenRecorderHelper.swift */; };
+		AA0100072CE0000100000007 /* PhotoCaptureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200072CE0000100000007 /* PhotoCaptureHelper.swift */; };
+		AA0100082CE0000100000008 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200082CE0000100000008 /* ContentView.swift */; };
+		AA0100092CE0000100000009 /* CharacterCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200092CE0000100000009 /* CharacterCarouselView.swift */; };
+		AA0100102CE0000100000010 /* SelectionHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200102CE0000100000010 /* SelectionHUDView.swift */; };
+		AA0100112CE0000100000011 /* BottomControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200112CE0000100000011 /* BottomControlsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA0200002CE0000100000000 /* ARFilterMeme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARFilterMeme.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0200012CE0000100000001 /* ARFilterMemeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFilterMemeApp.swift; sourceTree = "<group>"; };
+		AA0200022CE0000100000002 /* MemeCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCharacter.swift; sourceTree = "<group>"; };
+		AA0200032CE0000100000003 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
+		AA0200042CE0000100000004 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
+		AA0200052CE0000100000005 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		AA0200062CE0000100000006 /* ScreenRecorderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRecorderHelper.swift; sourceTree = "<group>"; };
+		AA0200072CE0000100000007 /* PhotoCaptureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureHelper.swift; sourceTree = "<group>"; };
+		AA0200082CE0000100000008 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AA0200092CE0000100000009 /* CharacterCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCarouselView.swift; sourceTree = "<group>"; };
+		AA0200102CE0000100000010 /* SelectionHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionHUDView.swift; sourceTree = "<group>"; };
+		AA0200112CE0000100000011 /* BottomControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomControlsView.swift; sourceTree = "<group>"; };
+		AA0200122CE0000100000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA0300002CE0000100000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA0400002CE0000100000000 = {
+			isa = PBXGroup;
+			children = (
+				AA0400012CE0000100000001 /* ARFilterMeme */,
+				AA0400022CE0000100000002 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA0400012CE0000100000001 /* ARFilterMeme */ = {
+			isa = PBXGroup;
+			children = (
+				AA0400032CE0000100000003 /* App */,
+				AA0400042CE0000100000004 /* Models */,
+				AA0400052CE0000100000005 /* AR */,
+				AA0400062CE0000100000006 /* Recorder */,
+				AA0400072CE0000100000007 /* Views */,
+				AA0200122CE0000100000012 /* Info.plist */,
+			);
+			path = ARFilterMeme;
+			sourceTree = "<group>";
+		};
+		AA0400022CE0000100000002 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA0200002CE0000100000000 /* ARFilterMeme.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA0400032CE0000100000003 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AA0200012CE0000100000001 /* ARFilterMemeApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AA0400042CE0000100000004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA0200022CE0000100000002 /* MemeCharacter.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA0400052CE0000100000005 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				AA0200032CE0000100000003 /* CustomARView.swift */,
+				AA0200042CE0000100000004 /* ARViewContainer.swift */,
+				AA0200052CE0000100000005 /* ModelManager.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		AA0400062CE0000100000006 /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				AA0200062CE0000100000006 /* ScreenRecorderHelper.swift */,
+				AA0200072CE0000100000007 /* PhotoCaptureHelper.swift */,
+			);
+			path = Recorder;
+			sourceTree = "<group>";
+		};
+		AA0400072CE0000100000007 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA0200082CE0000100000008 /* ContentView.swift */,
+				AA0200092CE0000100000009 /* CharacterCarouselView.swift */,
+				AA0200102CE0000100000010 /* SelectionHUDView.swift */,
+				AA0200112CE0000100000011 /* BottomControlsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA0500002CE0000100000000 /* ARFilterMeme */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA0600002CE0000100000000 /* Build configuration list for PBXNativeTarget "ARFilterMeme" */;
+			buildPhases = (
+				AA0700002CE0000100000000 /* Sources */,
+				AA0300002CE0000100000000 /* Frameworks */,
+				AA0800002CE0000100000000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARFilterMeme;
+			productName = ARFilterMeme;
+			productReference = AA0200002CE0000100000000 /* ARFilterMeme.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA0900002CE0000100000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AA0500002CE0000100000000 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = AA0600012CE0000100000000 /* Build configuration list for PBXProject "ARFilterMeme" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA0400002CE0000100000000;
+			productRefGroup = AA0400022CE0000100000002 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA0500002CE0000100000000 /* ARFilterMeme */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA0800002CE0000100000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA0700002CE0000100000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0100012CE0000100000001 /* ARFilterMemeApp.swift in Sources */,
+				AA0100022CE0000100000002 /* MemeCharacter.swift in Sources */,
+				AA0100032CE0000100000003 /* CustomARView.swift in Sources */,
+				AA0100042CE0000100000004 /* ARViewContainer.swift in Sources */,
+				AA0100052CE0000100000005 /* ModelManager.swift in Sources */,
+				AA0100062CE0000100000006 /* ScreenRecorderHelper.swift in Sources */,
+				AA0100072CE0000100000007 /* PhotoCaptureHelper.swift in Sources */,
+				AA0100082CE0000100000008 /* ContentView.swift in Sources */,
+				AA0100092CE0000100000009 /* CharacterCarouselView.swift in Sources */,
+				AA0100102CE0000100000010 /* SelectionHUDView.swift in Sources */,
+				AA0100112CE0000100000011 /* BottomControlsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA0A00012CE0000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA0A00022CE0000100000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA0A00032CE0000100000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ARFilterMeme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.antigravity.arfiltermeme;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA0A00042CE0000100000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ARFilterMeme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.antigravity.arfiltermeme;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA0600002CE0000100000000 /* Build configuration list for PBXNativeTarget "ARFilterMeme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0A00032CE0000100000003 /* Debug */,
+				AA0A00042CE0000100000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA0600012CE0000100000000 /* Build configuration list for PBXProject "ARFilterMeme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0A00012CE0000100000001 /* Debug */,
+				AA0A00022CE0000100000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA0900002CE0000100000000 /* Project object */;
+}
