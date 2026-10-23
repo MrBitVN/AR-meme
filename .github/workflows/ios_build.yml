@@ -34,12 +34,14 @@ jobs:
 
       - name: Compress App Bundle
         run: |
-          cd ios/build/Release-iphoneos
-          zip -r ARFilterMeme-iOS.zip ARFilterMeme.app
+          APP_PATH=$(find . -name "ARFilterMeme.app" -type d | head -n 1)
+          echo "Found app at: $APP_PATH"
+          cd "$(dirname "$APP_PATH")"
+          zip -r "$GITHUB_WORKSPACE/ARFilterMeme-iOS.zip" ARFilterMeme.app
 
       - name: Upload iOS Build Artifact
         uses: actions/upload-artifact@v4
         with:
           name: ARFilterMeme-iOS-Build
-          path: ios/build/Release-iphoneos/ARFilterMeme-iOS.zip
+          path: ARFilterMeme-iOS.zip
           retention-days: 14
