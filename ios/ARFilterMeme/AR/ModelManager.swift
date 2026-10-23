@@ -71,7 +71,7 @@ class ModelManager {
 
     private func createFallbackEntity(for character: MemeCharacter) -> ModelEntity {
         // Create an attractive stylized 3D character capsule with colored PBR material
-        let mesh = MeshResource.generateBox(size: [0.25, 0.35, 0.25], cornerRadius: 0.05)
+        let mesh = MeshResource.generateBox(size: [0.25, 0.35, 0.25])
         var material = SimpleMaterial()
         material.color = .init(tint: UIColor(character.themeColor))
         material.roughness = .init(floatLiteral: 0.3)

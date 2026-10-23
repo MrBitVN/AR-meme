@@ -26,3 +26,5 @@ bin/
 gen/
 out/
 app/build/
+
+*.zip

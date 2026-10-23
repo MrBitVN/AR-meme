@@ -19,14 +19,22 @@ class CustomARView: ARView, ARSessionDelegate {
     private let debounceInterval: TimeInterval = 0.5 // 500ms debounce
 
     required init(frame frameRect: CGRect) {
-        super.init(frame: frameRect)
-        setupARSession()
+        let isAR = ARWorldTrackingConfiguration.isSupported
+        super.init(
+            frame: frameRect,
+            cameraMode: isAR ? .ar : .nonAR,
+            automaticallyConfigureSession: false
+        )
         setupGestureRecognizers()
     }
 
     @MainActor required dynamic init?(coder decoder: NSCoder) {
-        super.init(coder: decoder)
-        setupARSession()
+        let isAR = ARWorldTrackingConfiguration.isSupported
+        super.init(
+            frame: .zero,
+            cameraMode: isAR ? .ar : .nonAR,
+            automaticallyConfigureSession: false
+        )
         setupGestureRecognizers()
     }
 
@@ -34,24 +42,29 @@ class CustomARView: ARView, ARSessionDelegate {
         self.activeCharacter = character
     }
 
-    private func setupARSession() {
-        self.session.delegate = self
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window != nil {
+            startSessionIfSupported()
+        } else {
+            session.pause()
+        }
+    }
 
+    private func startSessionIfSupported() {
         guard ARWorldTrackingConfiguration.isSupported else {
-            print("[ARDEBUG] ARWorldTrackingConfiguration is NOT supported on this device")
+            print("[ARDEBUG] ARWorldTrackingConfiguration is NOT supported on this device - running in nonAR 3D mode")
             return
         }
 
+        self.session.delegate = self
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal]
         config.environmentTexturing = .automatic
-        if ARWorldTrackingConfiguration.supportsFrameSemantics(.personSegmentationWithDepth) {
-            config.frameSemantics.insert(.personSegmentationWithDepth)
-        }
 
-        // Run session with stable tracking - DO NOT reset tracking on updates
+        // Run session with stable tracking safely after view is attached to window
         self.session.run(config)
-        print("[ARDEBUG] ARSession started with horizontal plane detection")
+        print("[ARDEBUG] ARSession started safely after view attached to window")
     }
 
     private func setupGestureRecognizers() {
@@ -84,7 +97,24 @@ class CustomARView: ARView, ARSessionDelegate {
             }
         }
 
-        // 2. Tap on plane -> Place new model using ARRaycastQuery
+        // 2. Tap to place new model
+        if !ARWorldTrackingConfiguration.isSupported {
+            let anchor = AnchorEntity(world: [0, -0.2, -0.8])
+            let modelEntity = ModelManager.shared.getModelInstance(for: activeCharacter)
+            modelEntity.generateCollisionShapes(recursive: true)
+            self.installGestures([.translation, .rotation, .scale], for: modelEntity)
+            anchor.addChild(modelEntity)
+            self.scene.addAnchor(anchor)
+            placedAnchors.append((anchor: anchor, entity: modelEntity, character: activeCharacter))
+            selectedIndex = placedAnchors.count - 1
+            onAnchorCountChanged?(placedAnchors.count)
+            onModelSelected?(activeCharacter, modelEntity.scale.x)
+            triggerHaptic()
+            print("[ARDEBUG] Placed model in nonAR mode (Simulator / Non-AR fallback)")
+            return
+        }
+
+        // ARCore/ARKit Plane Hit Testing
         guard let currentFrame = self.session.currentFrame else {
             print("[ARDEBUG] Tap ignored: currentFrame is nil")
             return

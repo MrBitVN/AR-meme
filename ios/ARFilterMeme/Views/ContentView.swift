@@ -1,4 +1,6 @@
 import SwiftUI
+import AVFoundation
+import ARKit
 
 struct ContentView: View {
     @State private var selectedCharacter = MemeCharacter.allCharacters[0]
@@ -22,7 +24,26 @@ struct ContentView: View {
     // Toast notification
     @State private var toastMessage: String? = nil
 
+    // Camera permission state
+    @State private var cameraAuthorized: Bool = (AVCaptureDevice.authorizationStatus(for: .video) == .authorized)
+
     var body: some View {
+        Group {
+            if cameraAuthorized || !ARWorldTrackingConfiguration.isSupported {
+                mainARView
+            } else {
+                CameraPermissionView(onGrantPermission: {
+                    requestCameraPermission()
+                })
+            }
+        }
+        .onAppear {
+            checkCameraPermission()
+            ModelManager.shared.preloadAll(characters: MemeCharacter.allCharacters)
+        }
+    }
+
+    private var mainARView: some View {
         ZStack {
             // 1. RealityKit AR View
             ARViewContainer(
@@ -157,11 +178,38 @@ struct ContentView: View {
                 .transition(.opacity)
             }
         }
-        .onAppear {
-            ModelManager.shared.preloadAll(characters: MemeCharacter.allCharacters)
-        }
         .sheet(isPresented: $showRecentPhotosSheet) {
             RecentPhotosView(photos: recentPhotos)
+        }
+    }
+
+    private func checkCameraPermission() {
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        if status == .authorized {
+            cameraAuthorized = true
+        } else if status == .notDetermined {
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                DispatchQueue.main.async {
+                    self.cameraAuthorized = granted
+                }
+            }
+        } else {
+            cameraAuthorized = false
+        }
+    }
+
+    private func requestCameraPermission() {
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        if status == .notDetermined {
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                DispatchQueue.main.async {
+                    self.cameraAuthorized = granted
+                }
+            }
+        } else if status == .denied || status == .restricted {
+            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsURL)
+            }
         }
     }
 
@@ -169,6 +217,40 @@ struct ContentView: View {
         withAnimation { toastMessage = message }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             withAnimation { toastMessage = nil }
+        }
+    }
+}
+
+struct CameraPermissionView: View {
+    var onGrantPermission: () -> Void
+
+    var body: some View {
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+            VStack(spacing: 24) {
+                Image(systemName: "camera.fill")
+                    .font(.system(size: 64))
+                    .foregroundColor(.yellow)
+                Text("Cần quyền Camera")
+                    .font(.title2.bold())
+                    .foregroundColor(.white)
+                Text("Ứng dụng cần quyền Camera để nhận diện mặt phẳng sàn nhà và đặt mô hình AR 3D.\nVui lòng cấp quyền để tiếp tục.")
+                    .font(.subheadline)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.white.opacity(0.8))
+                    .padding(.horizontal, 36)
+
+                Button(action: onGrantPermission) {
+                    Text("Cấp quyền Camera")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 36)
+                        .padding(.vertical, 14)
+                        .background(Color.yellow)
+                        .cornerRadius(25)
+                }
+                .padding(.top, 12)
+            }
         }
     }
 }
