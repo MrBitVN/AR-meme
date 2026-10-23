@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AR Filter Meme</string>
+    <string name="camera_permission_required">Camera và Micro được yêu cầu để sử dụng AR Camera và quay video.</string>
+    <string name="scan_surface_hint">Di chuyển camera nhẹ nhàng để phát hiện mặt đất / mặt bàn</string>
+    <string name="tap_to_place_hint">Chạm vào lưới chấm để đặt nhân vật 3D</string>
+    <string name="reset_scene">Làm mới</string>
+    <string name="take_photo">Chụp ảnh</string>
+    <string name="record_video">Quay video</string>
+    <string name="photo_saved">Đã lưu ảnh vào thư viện!</string>
+    <string name="video_saved">Đã lưu video vào thư viện!</string>
+</resources>
