@@ -32,16 +32,17 @@ jobs:
             CODE_SIGN_IDENTITY="" \
             BUILD_DIR=ios/build
 
-      - name: Compress App Bundle
+      - name: Package IPA for Sideloadly
         run: |
           APP_PATH=$(find . -name "ARFilterMeme.app" -type d | head -n 1)
           echo "Found app at: $APP_PATH"
-          cd "$(dirname "$APP_PATH")"
-          zip -r "$GITHUB_WORKSPACE/ARFilterMeme-iOS.zip" ARFilterMeme.app
+          mkdir -p Payload
+          cp -r "$APP_PATH" Payload/
+          zip -r "$GITHUB_WORKSPACE/ARFilterMeme.ipa" Payload
 
-      - name: Upload iOS Build Artifact
+      - name: Upload iOS IPA Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ARFilterMeme-iOS-Build
-          path: ARFilterMeme-iOS.zip
+          name: ARFilterMeme-iOS-IPA
+          path: ARFilterMeme.ipa
           retention-days: 14
