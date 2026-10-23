@@ -73,7 +73,9 @@ class ModelManager {
         // Create an attractive stylized 3D character capsule with colored PBR material
         let mesh = MeshResource.generateBox(size: [0.25, 0.35, 0.25], cornerRadius: 0.05)
         var material = SimpleMaterial()
-        material.color = .init(tint: UIColor(character.themeColor), roughness: 0.3, metallic: 0.1)
+        material.color = .init(tint: UIColor(character.themeColor))
+        material.roughness = .init(floatLiteral: 0.3)
+        material.metallic = .init(floatLiteral: 0.1)
         
         let entity = ModelEntity(mesh: mesh, materials: [material])
         entity.generateCollisionShapes(recursive: true)

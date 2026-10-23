@@ -90,7 +90,7 @@ class CustomARView: ARView, ARSessionDelegate {
             return
         }
 
-        guard currentFrame.camera.trackingState == .normal else {
+        guard case .normal = currentFrame.camera.trackingState else {
             print("[ARDEBUG] Tap ignored: Camera tracking is not normal: \(currentFrame.camera.trackingState)")
             return
         }
@@ -208,7 +208,10 @@ class CustomARView: ARView, ARSessionDelegate {
 
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         print("[ARDEBUG] ARCamera tracking state changed: \(camera.trackingState)")
-        let isNormal = (camera.trackingState == .normal)
+        var isNormal = false
+        if case .normal = camera.trackingState {
+            isNormal = true
+        }
         for item in placedAnchors {
             item.anchor.isEnabled = isNormal
         }
