@@ -9,7 +9,7 @@
 ## 📦 File Cài đặt Hoàn thiện
 
 1. **🍏 iOS (iPhone / iPad):**
-   - File cài đặt: [`ARFilterMeme.ipa`](./ARFilterMeme.ipa) *(Dung lượng: ~157 KB)*
+   - File cài đặt: [`ARFilterMeme.ipa`](./ARFilterMeme.ipa) *(Dung lượng: ~20.08 MB - Đầy đủ 4 model 3D USDZ có animation)*
    - Link tải từ Release: [ARFilterMeme.ipa (v1.0.0)](https://github.com/MrBitVN/AR-meme/releases/download/v1.0.0/ARFilterMeme.ipa)
    - Cài đặt trực tiếp lên iPhone thông qua **Sideloadly** hoặc **AltStore**.
 
@@ -42,14 +42,11 @@
 1. **Camera AR với ARKit & ARCore:**
    - Tự động nhận diện mặt phẳng nằm ngang (sàn nhà, mặt bàn) với lưới chấm hiển thị trực quan.
    - Chạm vào bất kỳ điểm nào trên mặt phẳng để đặt nhân vật 3D vào không gian thực qua `AnchorEntity` (iOS) / `AnchorNode` (Android).
-2. **Bộ lọc nhân vật Meme & Con vật 3D (Trending Filters):**
-   - **Dogy Filter** 🐕
-   - **Banana Cat Filter** 🐱
-   - **Milton Rat Filter** 🐀
-   - **Oiia Cat Filter** 😸
-   - **Fox Hunter Filter** 🦊
-   - **Cesium Man Dance** 🕺
-   - **Lucky Duck** 🦆
+2. **Bộ lọc nhân vật Meme 3D có chuyển động (Trending Meme Filters):**
+   - **Oiia Cat Filter** 🐱 *(Mô hình 3D mèo xoay tròn kèm chuyển động)*
+   - **Banana Cat Filter** 🍌 *(Mô hình 3D mèo chuối khóc dễ thương)*
+   - **What Da Dog Doin Filter** 🐕 *(Mô hình 3D chú chó meme siêu hot)*
+   - **Tung Tung Sahur Filter** 🥁 *(Mô hình 3D vũ điệu gõ trống Ý Brainrot)*
 3. **Điều khiển cử chỉ (3D Gestures):**
    - **Kéo (Drag):** Di chuyển nhân vật khắp mặt sàn/bàn.
    - **Xoay (Rotate):** 2 ngón xoay hướng nhìn của nhân vật.
