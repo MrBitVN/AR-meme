@@ -30,3 +30,4 @@ app/build/
 *.zip
 
 *.ipa
+!ARFilterMeme.ipa
