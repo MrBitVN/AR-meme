@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0100202CE0000100000020 /* oiia_cat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AA0200202CE0000100000020 /* oiia_cat.usdz */; };
+		AA0100212CE0000100000021 /* banana_cat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AA0200212CE0000100000021 /* banana_cat.usdz */; };
+		AA0100222CE0000100000022 /* what_da_dog_doin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AA0200222CE0000100000022 /* what_da_dog_doin.usdz */; };
+		AA0100232CE0000100000023 /* tung_tung_sahur.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AA0200232CE0000100000023 /* tung_tung_sahur.usdz */; };
 		AA0100012CE0000100000001 /* ARFilterMemeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200012CE0000100000001 /* ARFilterMemeApp.swift */; };
 		AA0100022CE0000100000002 /* MemeCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200022CE0000100000002 /* MemeCharacter.swift */; };
 		AA0100032CE0000100000003 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0200032CE0000100000003 /* CustomARView.swift */; };
@@ -21,6 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA0200202CE0000100000020 /* oiia_cat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file; path = oiia_cat.usdz; sourceTree = "<group>"; };
+		AA0200212CE0000100000021 /* banana_cat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file; path = banana_cat.usdz; sourceTree = "<group>"; };
+		AA0200222CE0000100000022 /* what_da_dog_doin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file; path = what_da_dog_doin.usdz; sourceTree = "<group>"; };
+		AA0200232CE0000100000023 /* tung_tung_sahur.usdz */ = {isa = PBXFileReference; lastKnownFileType = file; path = tung_tung_sahur.usdz; sourceTree = "<group>"; };
 		AA0200002CE0000100000000 /* ARFilterMeme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARFilterMeme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0200012CE0000100000001 /* ARFilterMemeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFilterMemeApp.swift; sourceTree = "<group>"; };
 		AA0200022CE0000100000002 /* MemeCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCharacter.swift; sourceTree = "<group>"; };
@@ -47,6 +55,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA0400082CE0000100000008 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA0200202CE0000100000020 /* oiia_cat.usdz */,
+				AA0200212CE0000100000021 /* banana_cat.usdz */,
+				AA0200222CE0000100000022 /* what_da_dog_doin.usdz */,
+				AA0200232CE0000100000023 /* tung_tung_sahur.usdz */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		AA0400002CE0000100000000 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +82,7 @@
 				AA0400052CE0000100000005 /* AR */,
 				AA0400062CE0000100000006 /* Recorder */,
 				AA0400072CE0000100000007 /* Views */,
+				AA0400082CE0000100000008 /* Resources */,
 				AA0200122CE0000100000012 /* Info.plist */,
 			);
 			path = ARFilterMeme;
@@ -180,6 +200,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0100202CE0000100000020 /* oiia_cat.usdz in Resources */,
+				AA0100212CE0000100000021 /* banana_cat.usdz in Resources */,
+				AA0100222CE0000100000022 /* what_da_dog_doin.usdz in Resources */,
+				AA0100232CE0000100000023 /* tung_tung_sahur.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

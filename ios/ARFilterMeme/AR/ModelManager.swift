@@ -23,54 +23,71 @@ class ModelManager {
 
         // Attempt loading USDZ from Bundle
         if let url = Bundle.main.url(forResource: character.modelName, withExtension: "usdz") {
-            Entity.loadModelAsync(contentsOf: url)
-                .sink(receiveCompletion: { completion in
-                    if case .failure(let error) = completion {
-                        print("[ARDEBUG] Failed loading USDZ for \(character.modelName): \(error.localizedDescription)")
-                    }
-                }, receiveValue: { [weak self] entity in
-                    self?.setupModelEntity(entity, for: character)
-                })
-                .store(in: &cancellables)
-        } else {
-            // Procedural fallback model: ensures 0 crashes when USDZ is not yet packaged
-            let fallback = createFallbackEntity(for: character)
-            modelCache[character.modelName] = fallback
-            print("[ARDEBUG] Created procedural fallback ModelEntity for: \(character.displayName)")
+            do {
+                let entity = try Entity.loadModel(contentsOf: url)
+                setupModelEntity(entity, for: character)
+                return
+            } catch {
+                print("[ARDEBUG] loadModel failed for \(character.modelName): \(error), trying Entity.load...")
+            }
+
+            do {
+                let loaded = try Entity.load(contentsOf: url)
+                if let modelEntity = loaded as? ModelEntity {
+                    setupModelEntity(modelEntity, for: character)
+                } else {
+                    let wrapper = ModelEntity()
+                    wrapper.addChild(loaded)
+                    setupModelEntity(wrapper, for: character)
+                }
+                return
+            } catch {
+                print("[ARDEBUG] Entity.load also failed for \(character.modelName): \(error)")
+            }
         }
+
+        // Procedural fallback model: ensures 0 crashes when USDZ is not found
+        let fallback = createFallbackEntity(for: character)
+        modelCache[character.modelName] = fallback
+        print("[ARDEBUG] Created procedural fallback ModelEntity for: \(character.displayName)")
     }
 
     func getModelInstance(for character: MemeCharacter) -> ModelEntity {
         if let cached = modelCache[character.modelName] {
             let cloned = cached.clone(recursive: true)
-            // Re-trigger animation on the cloned instance
-            if let animation = cloned.availableAnimations.first {
-                cloned.playAnimation(animation.repeat())
-            }
+            playAllAnimations(on: cloned)
             return cloned
         }
 
-        // Synchronous fallback if cache miss
+        preloadModel(for: character)
+        if let cached = modelCache[character.modelName] {
+            let cloned = cached.clone(recursive: true)
+            playAllAnimations(on: cloned)
+            return cloned
+        }
+
         let fallback = createFallbackEntity(for: character)
-        modelCache[character.modelName] = fallback
         return fallback.clone(recursive: true)
     }
 
     private func setupModelEntity(_ entity: ModelEntity, for character: MemeCharacter) {
         entity.generateCollisionShapes(recursive: true)
         entity.scale = SIMD3<Float>(repeating: character.defaultScale)
-        
-        // Auto-play animation if available
-        if let animation = entity.availableAnimations.first {
-            entity.playAnimation(animation.repeat())
-        }
-
+        playAllAnimations(on: entity)
         modelCache[character.modelName] = entity
         print("[ARDEBUG] Successfully preloaded and cached ModelEntity: \(character.displayName)")
     }
 
+    private func playAllAnimations(on entity: Entity) {
+        for anim in entity.availableAnimations {
+            entity.playAnimation(anim.repeat())
+        }
+        for child in entity.children {
+            playAllAnimations(on: child)
+        }
+    }
+
     private func createFallbackEntity(for character: MemeCharacter) -> ModelEntity {
-        // Create an attractive stylized 3D character capsule with colored PBR material
         let mesh = MeshResource.generateBox(size: [0.25, 0.35, 0.25])
         var material = SimpleMaterial()
         material.color = .init(tint: UIColor(character.themeColor))

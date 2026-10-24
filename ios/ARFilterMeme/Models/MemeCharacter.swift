@@ -31,44 +31,20 @@ struct MemeCharacter: Identifiable, Equatable {
             themeColor: Color.yellow
         ),
         MemeCharacter(
-            id: "dogy",
+            id: "what_da_dog_doin",
             displayName: "What Da Dog Doin 🐕",
-            modelName: "dogy",
+            modelName: "what_da_dog_doin",
             defaultScale: 0.35,
             iconName: "dog.fill",
             themeColor: Color.orange
         ),
         MemeCharacter(
-            id: "fox",
-            displayName: "Fox 🦊",
-            modelName: "fox",
+            id: "tung_tung_sahur",
+            displayName: "Tung Tung Sahur 🥁",
+            modelName: "tung_tung_sahur",
             defaultScale: 0.35,
-            iconName: "flame.fill",
-            themeColor: Color.red
-        ),
-        MemeCharacter(
-            id: "duck",
-            displayName: "Duck 🦆",
-            modelName: "duck",
-            defaultScale: 0.30,
-            iconName: "bird.fill",
-            themeColor: Color.green
-        ),
-        MemeCharacter(
-            id: "milton_rat",
-            displayName: "Milton Rat 🐀",
-            modelName: "milton_rat",
-            defaultScale: 0.30,
-            iconName: "tortoise.fill",
+            iconName: "music.note",
             themeColor: Color.purple
-        ),
-        MemeCharacter(
-            id: "cesium_man",
-            displayName: "Cesium Man 🏃",
-            modelName: "cesium_man",
-            defaultScale: 0.40,
-            iconName: "figure.walk",
-            themeColor: Color.cyan
         )
     ]
 }
